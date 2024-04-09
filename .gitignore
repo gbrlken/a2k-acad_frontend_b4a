@@ -1,1 +1,9 @@
 AutoBackups
+*.apk
+Objects/bin/
+Objects/dexed/
+Objects/gen
+Objects/src
+Objects/*.txt
+*.dex
+*.class

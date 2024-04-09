@@ -56,6 +56,7 @@ End Sub
 Sub Globals
 	'These global variables will be redeclared each time the activity is created.
 	Dim activeTab = "home"
+	Dim userProgress=59
 	Private homeLbl As Label
 	Private learnLbl As Label
 	Private settingsLbl As Label
@@ -70,12 +71,17 @@ Sub Globals
 	Private learnBtn As Panel
 	Private settingsBtn As Panel
 	Private homeContent As ScrollView
+	Private percent As Label
+	Private progress As Panel
+	Private progressBackground As Panel
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("Layout")
 	mainPanel.LoadLayout("homeLayout")
 	homeContent.Panel.LoadLayout("homeContent")
+	Sleep(100)
+	animateProgress(userProgress)
 End Sub
 
 Sub Activity_Resume
@@ -85,6 +91,14 @@ End Sub
 Sub Activity_Pause (UserClosed As Boolean)
 
 End Sub
+
+Sub animateProgress(currentUserProgress As Int)
+	If currentUserProgress>9 Then
+		progress.SetLayoutAnimated(1500,progress.Left,progress.Top,progressBackground.Width*currentUserProgress/100,progress.Height)
+		percent.SetLayoutAnimated(1500,(progress.Left+(progressBackground.Width*currentUserProgress/100))-8%x,percent.Top,percent.Width,percent.Height)
+	End If
+End Sub
+
 Sub fillIcon(navIcon As Label, tabName As String)
 	homeIcon.Text=""
 	learnIcon.Text=""
