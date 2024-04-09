@@ -1,30 +1,34 @@
 ﻿Build1=Default,b4a.example
 File1=a2k.ttf
-File10=topBannerNew.png
+File10=productsansthin.ttf
+File11=topBanner.png
+File12=topBannerNew.png
 File2=a2klogo.png
-File3=Dongle-Bold.ttf
-File4=Dongle-Light.ttf
-File5=Dongle-Regular.ttf
-File6=homeContent.bal
-File7=homeLayout.bal
-File8=Layout.bal
-File9=topBanner.png
+File3=homeContent.bal
+File4=homeLayout.bal
+File5=Layout.bal
+File6=productsans.ttf
+File7=productsansblack.ttf
+File8=productsansbold.ttf
+File9=productsanslight.ttf
 FileGroup1=New Group
 FileGroup10=New Group
+FileGroup11=New Group
+FileGroup12=New Group
 FileGroup2=New Group
-FileGroup3=New Group
-FileGroup4=New Group
-FileGroup5=New Group
-FileGroup6=Default Group
-FileGroup7=Default Group
-FileGroup8=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=New Group
+FileGroup7=New Group
+FileGroup8=New Group
 FileGroup9=New Group
 Group=Default Group
 Library1=core
 Library2=xui
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~~\n~CreateResource(values-v21, themes.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="@android:style/Theme.Material">~\n~        <item name="android:colorPrimary">#FF000000</item>~\n~        <item name="android:colorPrimaryDark">#FFFFECC8</item>~\n~        <item name="android:colorAccent">#FFCC47</item>~\n~		<item name="android:windowLightStatusBar">true</item>~\n~        <item name="android:navigationBarColor">#292929</item>~\n~        <item name="android:windowLightNavigationBar">false</item>~\n~		<item name="android:windowIsTranslucent">true</item>~\n~  		<item name="android:windowNoTitle">false</item>~\n~  		<item name="android:windowFullscreen">false</item>~\n~    </style>~\n~</resources>~\n~)~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~~\n~'End of default text.~\n~
 Module1=Starter
-NumberOfFiles=10
+NumberOfFiles=12
 NumberOfLibraries=2
 NumberOfModules=1
 Version=12.8
@@ -107,16 +111,16 @@ Sub animateActiveTab (navLbl As Label, navIcon As Label, navMarker As Panel, tab
 	learnMarker.Visible=False
 	settingsMarker.Visible=False
 	
-	homeLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("Dongle-Light.ttf"),Typeface.STYLE_NORMAL)
-	learnLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("Dongle-Light.ttf"),Typeface.STYLE_NORMAL)
-	settingsLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("Dongle-Light.ttf"),Typeface.STYLE_NORMAL)
+	homeLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("productsans.ttf"),Typeface.STYLE_NORMAL)
+	learnLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("productsans.ttf"),Typeface.STYLE_NORMAL)
+	settingsLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("productsans.ttf"),Typeface.STYLE_NORMAL)
 	
 	homeIcon.TextColor=0xFFFFCC47
 	learnIcon.TextColor=0xFFFFCC47
 	settingsIcon.TextColor=0xFFFFCC47
 	
 	navMarker.SetLayout(navIcon.Left+6%x,navMarker.Top,10%X,navMarker.Height)
-	navLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("Dongle-Light.ttf"),Typeface.STYLE_BOLD)
+	navLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("productsans.ttf"),Typeface.STYLE_BOLD)
 	navIcon.TextColor=0xFF292929
 	fillIcon(navIcon,tabName)
 			
