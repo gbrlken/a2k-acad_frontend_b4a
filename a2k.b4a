@@ -125,17 +125,9 @@ Sub animateActiveTab (navLbl As Label, navIcon As Label, navMarker As Panel, tab
 	learnMarker.Visible=False
 	settingsMarker.Visible=False
 	
-	homeLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("productsans.ttf"),Typeface.STYLE_NORMAL)
-	learnLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("productsans.ttf"),Typeface.STYLE_NORMAL)
-	settingsLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("productsans.ttf"),Typeface.STYLE_NORMAL)
 	
-	homeIcon.TextColor=0xFFFFCC47
-	learnIcon.TextColor=0xFFFFCC47
-	settingsIcon.TextColor=0xFFFFCC47
 	
 	navMarker.SetLayout(navIcon.Left+6%x,navMarker.Top,10%X,navMarker.Height)
-	navLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("productsans.ttf"),Typeface.STYLE_BOLD)
-	navIcon.TextColor=0xFF292929
 	fillIcon(navIcon,tabName)
 			
 	Sleep(5)
@@ -145,6 +137,27 @@ Sub animateActiveTab (navLbl As Label, navIcon As Label, navMarker As Panel, tab
 	homeBtn.Enabled=True
 	learnBtn.Enabled=True
 	settingsBtn.Enabled=True
+	
+End Sub
+Sub animateActiveTab2 (navLbl As Label, navIcon As Label, navMarker As Panel, tabName As String)
+	activeTab=tabName
+	
+	homeBtn.Enabled=False
+	learnBtn.Enabled=False
+	settingsBtn.Enabled=False
+	
+			
+	Sleep(5)
+	homeMarker.SetLayoutAnimated(300,navIcon.Left,navMarker.Top,navIcon.Width,navMarker.Height)
+	
+	homeBtn.Enabled=True
+	learnBtn.Enabled=True
+	settingsBtn.Enabled=True
+	Sleep(50)
+	
+	fillIcon(navIcon,tabName)
+	
+	
 	
 End Sub
 
