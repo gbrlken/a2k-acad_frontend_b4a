@@ -1,0 +1,149 @@
+﻿Build1=Default,b4a.example
+File1=a2k.ttf
+File10=topBannerNew.png
+File2=a2klogo.png
+File3=Dongle-Bold.ttf
+File4=Dongle-Light.ttf
+File5=Dongle-Regular.ttf
+File6=homeContent.bal
+File7=homeLayout.bal
+File8=Layout.bal
+File9=topBanner.png
+FileGroup1=New Group
+FileGroup10=New Group
+FileGroup2=New Group
+FileGroup3=New Group
+FileGroup4=New Group
+FileGroup5=New Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+FileGroup9=New Group
+Group=Default Group
+Library1=core
+Library2=xui
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~~\n~CreateResource(values-v21, themes.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="@android:style/Theme.Material">~\n~        <item name="android:colorPrimary">#FF000000</item>~\n~        <item name="android:colorPrimaryDark">#FFFFECC8</item>~\n~        <item name="android:colorAccent">#FFCC47</item>~\n~		<item name="android:windowLightStatusBar">true</item>~\n~        <item name="android:navigationBarColor">#292929</item>~\n~        <item name="android:windowLightNavigationBar">false</item>~\n~		<item name="android:windowIsTranslucent">true</item>~\n~  		<item name="android:windowNoTitle">false</item>~\n~  		<item name="android:windowFullscreen">false</item>~\n~    </style>~\n~</resources>~\n~)~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=10
+NumberOfLibraries=2
+NumberOfModules=1
+Version=12.8
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: B4A Example
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Private xui As XUI
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	Dim activeTab = "home"
+	Private homeLbl As Label
+	Private learnLbl As Label
+	Private settingsLbl As Label
+	Private homeIcon As Label
+	Private learnIcon As Label
+	Private settingsIcon As Label
+	Private homeMarker As Panel
+	Private learnMarker As Panel
+	Private settingsMarker As Panel
+	Private mainPanel As Panel
+	Private homeBtn As Panel
+	Private learnBtn As Panel
+	Private settingsBtn As Panel
+	Private homeContent As ScrollView
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.LoadLayout("Layout")
+	mainPanel.LoadLayout("homeLayout")
+	homeContent.Panel.LoadLayout("homeContent")
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+Sub fillIcon(navIcon As Label, tabName As String)
+	homeIcon.Text=""
+	learnIcon.Text=""
+	settingsIcon.Text=""
+	
+	If tabName="home" Then
+		homeIcon.Text=""
+	End If
+	If tabName="learn" Then
+		learnIcon.Text=""
+	End If
+	If tabName="settings" Then
+		settingsIcon.Text=""
+	End If
+End Sub
+Sub animateActiveTab (navLbl As Label, navIcon As Label, navMarker As Panel, tabName As String)
+	activeTab=tabName
+	
+	homeBtn.Enabled=False
+	learnBtn.Enabled=False
+	settingsBtn.Enabled=False
+	
+	homeMarker.Visible=False
+	learnMarker.Visible=False
+	settingsMarker.Visible=False
+	
+	homeLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("Dongle-Light.ttf"),Typeface.STYLE_NORMAL)
+	learnLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("Dongle-Light.ttf"),Typeface.STYLE_NORMAL)
+	settingsLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("Dongle-Light.ttf"),Typeface.STYLE_NORMAL)
+	
+	homeIcon.TextColor=0xFFFFCC47
+	learnIcon.TextColor=0xFFFFCC47
+	settingsIcon.TextColor=0xFFFFCC47
+	
+	navMarker.SetLayout(navIcon.Left+6%x,navMarker.Top,10%X,navMarker.Height)
+	navLbl.Typeface=Typeface.CreateNew(Typeface.LoadFromAssets("Dongle-Light.ttf"),Typeface.STYLE_BOLD)
+	navIcon.TextColor=0xFF292929
+	fillIcon(navIcon,tabName)
+			
+	Sleep(5)
+	navMarker.SetLayoutAnimated(120,navIcon.Left,navMarker.Top,navIcon.Width,navMarker.Height)
+	navMarker.SetVisibleAnimated(60, True)
+	
+	homeBtn.Enabled=True
+	learnBtn.Enabled=True
+	settingsBtn.Enabled=True
+	
+End Sub
+
+Private Sub homeBtn_Click
+	If Not(activeTab="home") Then
+		animateActiveTab(homeLbl, homeIcon, homeMarker, "home")
+	End If
+End Sub
+
+Private Sub learnBtn_Click
+	If Not(activeTab="learn") Then
+		animateActiveTab(learnLbl, learnIcon, learnMarker, "learn")
+	End If
+End Sub
+
+Private Sub settingsBtn_Click
+	If Not(activeTab="settings") Then
+		animateActiveTab(settingsLbl, settingsIcon, settingsMarker, "settings")
+	End If
+End Sub
